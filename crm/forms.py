@@ -12,7 +12,7 @@ class OrderForm(forms.Form):
 
     Для отображения стилей, в шаблоне прописывается стиль и добавляется
     аттрибут widget с forms.TextInput с аттрибутом нужного класса:
-    widget=forms.TextInput(attrs={'class': 'css_input'})
+    widget=forms.TextInput(attrs={'class': 'form-control'})
     """
-    name = forms.CharField(max_length=200, required=False, widget=forms.TextInput(attrs={'class': 'css_input'}))
-    phone = forms.CharField(max_length=200)
+    name = forms.CharField(max_length=200, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    phone = forms.CharField(max_length=200, widget=forms.TextInput(attrs={'class': 'form-control'}))
