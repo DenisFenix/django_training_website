@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'price.apps.PriceConfig',
     'crm.apps.CrmConfig',
     'cms.apps.CmsConfig',
     'django.contrib.admin',
