@@ -1,4 +1,4 @@
-"""landingpagewebsite URL Configuration
+"""config URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.1/topics/http/urls/
@@ -18,9 +18,15 @@ from django.urls import path
 from crm import views
 from django.conf import settings
 from django.conf.urls.static import static
+from .settings import DEBUG
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.first_page),
     path('thanks/', views.thanks_page, name='thanks_page')
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
+# Если Debug = True, то оставляем старый формат, а если Debug = False, то данный путь не будет использоваться,
+# т.к. данный путь указывает путь к статике, а в dev версии управляет сервер Django,
+# но на боевом сервере статикой занимается сервер NGINX
+if DEBUG:
+    urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
